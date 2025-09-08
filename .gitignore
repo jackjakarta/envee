@@ -1,5 +1,6 @@
 envee-darwin*
+envee-linux*
 .DS_Store
 .idea/
 .vscode/
-injectenv
+envee
