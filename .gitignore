@@ -1,0 +1,5 @@
+envee-darwin*
+.DS_Store
+.idea/
+.vscode/
+injectenv
