@@ -2,7 +2,7 @@
 
 Inject environment variables from a file into a process.
 
-## Instalation
+## Installation
 
 ```bash
 brew tap jackjakarta/envee
