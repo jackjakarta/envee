@@ -10,14 +10,18 @@ import (
 
 func main() {
 	var file string
+
 	flag.StringVar(&file, "f", ".env", "path to env file (default .env)")
+
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [-f .env] -- command [args...]\n", os.Args[0])
 		flag.PrintDefaults()
 	}
+
 	flag.Parse()
 
 	args := flag.Args()
+
 	if len(args) == 0 {
 		fmt.Fprintln(os.Stderr, "error: missing command to run")
 		flag.Usage()
@@ -25,6 +29,7 @@ func main() {
 	}
 
 	envFromFile, err := parseEnvFile(file)
+
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "failed to read env file %q: %v\n", file, err)
 		os.Exit(1)
@@ -45,6 +50,7 @@ func main() {
 				os.Exit(status.ExitStatus())
 			}
 		}
+
 		// Otherwise it likely failed to start.
 		fmt.Fprintf(os.Stderr, "failed to run command: %v\n", err)
 		os.Exit(1)
