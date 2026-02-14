@@ -1,9 +1,12 @@
 #!/bin/bash
 
-GOOS=linux GOARCH=amd64 go build -o envee && tar -czf envee-linux-amd64.tar.gz envee && \
-GOOS=linux GOARCH=arm64 go build -o envee && tar -czf envee-linux-arm64.tar.gz envee && \
-GOOS=darwin GOARCH=amd64 go build -o envee && tar -czf envee-darwin-amd64.tar.gz envee && \
-GOOS=darwin GOARCH=arm64 go build -o envee && tar -czf envee-darwin-arm64.tar.gz envee
+VERSION="${1:-dev}"
+LDFLAGS="-s -w -X main.version=${VERSION}"
+
+GOOS=linux GOARCH=amd64 go build -ldflags "${LDFLAGS}" -o envee && tar -czf envee-linux-amd64.tar.gz envee && \
+GOOS=linux GOARCH=arm64 go build -ldflags "${LDFLAGS}" -o envee && tar -czf envee-linux-arm64.tar.gz envee && \
+GOOS=darwin GOARCH=amd64 go build -ldflags "${LDFLAGS}" -o envee && tar -czf envee-darwin-amd64.tar.gz envee && \
+GOOS=darwin GOARCH=arm64 go build -ldflags "${LDFLAGS}" -o envee && tar -czf envee-darwin-arm64.tar.gz envee
 
 rm envee
 echo "Build complete!"
