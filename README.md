@@ -4,6 +4,19 @@ A lightweight Go CLI tool that injects environment variables from a `.env` file 
 
 ## Installation
 
+### Script (Recommended)
+
+```sh
+curl -fsSL https://envee.jackjakarta.xyz/install.sh | sh
+```
+
+Builds are available for Linux and macOS (`amd64` and `arm64`). The script
+verifies checksums and installs to `/usr/local/bin` (or `~/.local/bin`).
+Useful environment variables:
+
+- `ENVEE_VERSION`: install a specific version (e.g. `0.1.4`). The default is the latest release.
+- `ENVEE_INSTALL_DIR`: install to a custom directory.
+
 ### Homebrew
 
 ```bash
